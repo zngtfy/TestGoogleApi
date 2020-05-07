@@ -1,26 +1,26 @@
-using Google.Apis.Auth.OAuth2;
+﻿using Google.Apis.Auth.OAuth2;
 using Google.Apis.Drive.v3;
 using Google.Apis.Services;
 using Google.Apis.Util.Store;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading;
 
-namespace TestGoogleApi.GDrive
+namespace TestGoogleApi.GDriveConsole
 {
     /// <summary>
     /// https://developers.google.com/drive/api/v3/quickstart/dotnet
     /// </summary>
-    public class Program
+    class Program
     {
         static string[] Scopes = { DriveService.Scope.DriveReadonly };
         static string ApplicationName = "Drive API .NET Quickstart";
 
-        public static void Main(string[] args)
+        static void Main(string[] args)
         {
+            Console.WriteLine("Hello World!");
+
             UserCredential credential;
 
             using (var stream = new FileStream("client_secret.json", FileMode.Open, FileAccess.Read))
@@ -65,16 +65,7 @@ namespace TestGoogleApi.GDrive
             {
                 Console.WriteLine("No files found.");
             }
-            //Console.Read();
-
-            CreateHostBuilder(args).Build().Run();
+            Console.Read();
         }
-
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
     }
 }
