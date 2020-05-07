@@ -1,5 +1,3 @@
-using System;
-
 namespace TestGoogleApi.GDrive.Models
 {
     public class ErrorViewModel
